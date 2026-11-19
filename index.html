@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok Growth Pro</title><style>
+*{box-sizing:border-box}body{margin:0;background:#0b1020;color:#f5f7fb;font:15px system-ui,Arial}
+header,main{max-width:1000px;margin:auto;padding:20px}header{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #29344b}
+h1{font-size:30px;margin:10px 0}.muted{color:#9aa7bd}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.card{background:#151d32;border:1px solid #29344b;border-radius:15px;padding:17px}.num{font-size:27px;font-weight:800;margin:8px 0}
+button,a.btn{display:inline-block;border:0;border-radius:10px;padding:12px 16px;background:#ff3b75;color:white;text-decoration:none;font-weight:750;cursor:pointer}
+.secondary{background:#27344d}section{margin:16px 0}.notice{background:#102b32;border:1px solid #24515a;padding:13px;border-radius:12px;line-height:1.5}
+@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<header><strong>TIKTOK <span style="color:#ff3b75">GROWTH PRO</span></strong><span class="muted">Starter · v1</span></header>
+<main><h1>Your creator dashboard</h1><p class="muted">Track permitted account insights and plan authentic content growth.</p>
+<div class="grid">
+<div class="card"><div class="muted">Followers</div><div class="num">—</div><small class="muted">Connect account first</small></div>
+<div class="card"><div class="muted">Following</div><div class="num">—</div><small class="muted">Connect account first</small></div>
+<div class="card"><div class="muted">Likes</div><div class="num">—</div><small class="muted">Connect account first</small></div>
+<div class="card"><div class="muted">Videos</div><div class="num">—</div><small class="muted">Connect account first</small></div>
+</div>
+<section class="card"><h2>Connect TikTok</h2><p class="muted">Sign-in and consent happen on TikTok. This app never asks for your TikTok password.</p>
+<a class="btn" href="/auth/tiktok">Continue with TikTok</a>
+<p id="status" class="muted"></p></section>
+<section class="card"><h2>Plans</h2><p><b>Free:</b> basic insights and content planning.</p><p><b>Premium:</b> advanced reports and saved history — planned, payments not enabled.</p></section>
+<section class="notice"><b>Important:</b> No fake views, followers, likes, comments or shares are generated. TikTok data appears only after your app is approved for the relevant API scopes. This starter does not yet include public user registration, database-backed accounts, payment processing or persistent token storage.</section>
+</main><script>
+fetch('/api/status').then(r=>r.json()).then(s=>{
+document.getElementById('status').textContent=s.tiktokConfigured?
+'TikTok app credentials detected. OAuth still requires approved products and redirect URI.':
+'Setup needed: TikTok developer credentials have not been added to the server yet.';
+}).catch(()=>document.getElementById('status').textContent='Server status unavailable.');
+</script></body></html>
